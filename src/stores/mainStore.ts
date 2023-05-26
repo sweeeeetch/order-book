@@ -1,5 +1,5 @@
 import { type InjectionKey } from "vue";
-import { createStore, Store, useStore as baseUseStore } from "vuex";
+import { createStore, Store, useStore as baseUseStore, type Commit } from "vuex";
 
 export interface Quote {
   price: number;
@@ -39,42 +39,42 @@ export const store = createStore<State>({
     chosenSymbol: "",
   },
   mutations: {
-    setSymbols(state, symbols: string[]) {
+    setSymbols(state: State, symbols: string[]) {
       state.symbols = symbols;
     },
-    setBids(state, bids: Quote[]) {
+    setBids(state: State, bids: Quote[]) {
       state.bids = bids;
     },
-    setAsks(state, asks: Quote[]) {
+    setAsks(state: State, asks: Quote[]) {
       state.asks = asks;
     },
-    addOrder(state, order: Order) {
+    addOrder(state: State, order: Order) {
       state.orders.push(order);
     },
-    setChosenSymbol(state, symbol: string) {
+    setChosenSymbol(state: State, symbol: string) {
       state.chosenSymbol = symbol;
     },
-    removeOrder(state, order: Order) {
+    removeOrder(state: State, order: Order) {
       state.orders = state.orders.filter(el => el.id !== order.id);
     },
   },
   actions: {
-    setSymbols({ commit }, symbols: string[]) {
+    setSymbols({ commit }: { commit: Commit }, symbols: string[]) {
       commit("setSymbols", symbols);
     },
-    setBids({ commit }, bids: Quote[]) {
+    setBids({ commit }: { commit: Commit }, bids: Quote[]) {
       commit("setBids", bids);
     },
-    setAsks({ commit }, asks: Quote[]) {
+    setAsks({ commit }: { commit: Commit }, asks: Quote[]) {
       commit("setAsks", asks);
     },
-    addOrder({ commit }, order: Order) {
+    addOrder({ commit }: { commit: Commit }, order: Order) {
       commit("addOrder", order);
     },
-    setChosenSymbol({ commit }, symbol: string) {
+    setChosenSymbol({ commit }: { commit: Commit }, symbol: string) {
       commit("setChosenSymbol", symbol);
     },
-    removeOrder({ commit }, order: Order) {
+    removeOrder({ commit }: { commit: Commit }, order: Order) {
       commit("removeOrder", order);
     },
   },
