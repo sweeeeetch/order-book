@@ -43,14 +43,18 @@ let websocket: WebSocket | null = null;
 let wsPrice: WebSocket;
 
 const connectToWebSocket = () => {
-  websocket = new WebSocket(
-    `wss://stream.binance.com:9443/ws/${chosenSymbol.value.toLocaleLowerCase()}@depth10@1000ms`
-  );
-  wsPrice = new WebSocket(
-    `wss://stream.binance.com:9443/ws/${chosenSymbol.value.toLocaleLowerCase()}@ticker`
-  );
-  wsPrice.onmessage = handleWebSocketMessage;
-  websocket.onmessage = handleWebSocketMessage;
+  try {
+    websocket = new WebSocket(
+      `wss://stream.binance.com:9443/ws/${chosenSymbol.value.toLocaleLowerCase()}@depth10@1000ms`
+    );
+    wsPrice = new WebSocket(
+      `wss://stream.binance.com:9443/ws/${chosenSymbol.value.toLocaleLowerCase()}@ticker`
+    );
+    wsPrice.onmessage = handleWebSocketMessage;
+    websocket.onmessage = handleWebSocketMessage;
+  } catch (e) {
+    alert("Internal server error. Try again later");
+  }
 };
 
 const handleWebSocketMessage = (event: MessageEvent) => {

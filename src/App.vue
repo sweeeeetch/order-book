@@ -25,15 +25,19 @@ const setSymbol = () => {
 };
 
 onMounted(async () => {
-  isLoading.value = true;
+  try {
+    isLoading.value = true;
+    const { data } = await axios.get("https://api.binance.com/api/v3/exchangeInfo");
 
-  const { data } = await axios.get("https://api.binance.com/api/v3/exchangeInfo");
-  isLoading.value = false;
+    const symbols = data.symbols.map((symbol: any) => symbol.symbol);
+    const sortedSymbols = symbols.sort((a: string, b: string) => a.localeCompare(b));
 
-  const symbols = data.symbols.map((symbol: any) => symbol.symbol);
-  const sortedSymbols = symbols.sort((a: string, b: string) => a.localeCompare(b));
-
-  store.dispatch("setSymbols", sortedSymbols);
+    store.dispatch("setSymbols", sortedSymbols);
+  } catch (e) {
+    alert("Internal API error. Try again later");
+  } finally {
+    isLoading.value = false;
+  }
 });
 </script>
 
