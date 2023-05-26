@@ -11,7 +11,7 @@
     <a href="https://github.com/sweeeeetch/order-book"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://fastidious-caramel-a438c3.netlify.app">View Demo</a>
+    <a href="https://order-book-vue.netlify.app/">View Demo</a>
     ·
     <a href="https://github.com/sweeeeetch/order-book/issues">Report Bug</a>
     ·
