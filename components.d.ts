@@ -15,7 +15,6 @@ declare module '@vue/runtime-core' {
     ElInputNumber: typeof import('element-plus/es')['ElInputNumber']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElSelect: typeof import('element-plus/es')['ElSelect']
-    ElSellect: typeof import('element-plus/es')['ElSellect']
     Loading: typeof import('./src/components/Loading.vue')['default']
     OrderBook: typeof import('./src/components/OrderBook.vue')['default']
   }
