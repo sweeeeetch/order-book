@@ -1,40 +1,83 @@
-# orders
+<div align="center">
+  <a href="https://github.com/sweeeeetch/order-book">
+    <img src="public/favicon.svg" alt="Logo" width="80" height="80">
+  </a>
 
-This template should help get you started developing with Vue 3 in Vite.
+  <h3 align="center">Order Book</h3>
 
-## Recommended IDE Setup
+  <p align="center">
+    Live order book. Test task for Vuejs developer
+    <br />
+    <a href="https://github.com/sweeeeetch/order-book"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://fastidious-caramel-a438c3.netlify.app">View Demo</a>
+    ·
+    <a href="https://github.com/sweeeeetch/order-book/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/sweeeeetch/order-book/issues">Request Feature</a>
+  </p>
+</div>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+  </ol>
+</details>
 
-## Type Support for `.vue` Imports in TS
+## About The Project
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+This is live Order book component for Vuejs. Although full logic is not located in one component, main part is written there.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+This Vue.js application is a local order book that integrates with the Binance WebSocket API. It allows users to select a trading pair and retrieve real-time order book data and quotes for the chosen pair. The application fetches the list of available trading symbols from the Binance API on initialization and stores them in the Vuex store. Users can select a trading pair from a dropdown menu and click a button to fetch the order book data. The order book is displayed with separate sections for bids and asks, showing the price, quantity, and total in USD for each order.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+The application utilizes WebSocket connections to receive live updates of the order book and the latest price for the selected trading pair. The current price is displayed along with an arrow indicating price movements, and the spread percentage is calculated and shown.
 
-## Customize configuration
+Also users can create their mock orders and look after them beeing moved based on price of pair.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Project Setup
+### Built With
 
-```sh
-npm install
-```
+#### Front-end:
 
-### Compile and Hot-Reload for Development
+- ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+- ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+- ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) as SCSS
+- ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-```sh
-npm run dev
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Type-Check, Compile and Minify for Production
+<!-- GETTING STARTED -->
 
-```sh
-npm run build
-```
+## Getting Started
+
+In order to start this project from local PC, you need to follow this steps below:
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/sweeeeetch/order-book.git
+   ```
+2. Install NPM packages in both client and server folders
+   ```sh
+   npm install
+   ```
+3. Run starting script and you are settled!
+`sh
+    npm run dev
+    `
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
