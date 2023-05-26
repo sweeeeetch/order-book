@@ -121,7 +121,7 @@ const addOrder = () => {
     order: true,
   };
   store.dispatch("addOrder", order);
-  console.log(bids.value);
+
   selectedType.value = "";
   amount.value = undefined;
   price.value = undefined;
@@ -151,7 +151,6 @@ watch(currentPrice, (newPrice, oldPrice) => {
 });
 
 onMounted(() => {
-  console.log("mounted");
   connectToWebSocket();
 });
 
