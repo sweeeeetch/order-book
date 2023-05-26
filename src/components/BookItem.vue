@@ -1,9 +1,16 @@
 <script setup lang="ts">
-const { quantity, price, type, avgAmount } = defineProps<{
-  quantity: number;
-  price: number;
-  type: string;
+import type { Order, Quote } from "@/stores/mainStore";
+
+// const { quantity, price, type, avgAmount } = defineProps<{
+//   quantity: number;
+//   price: number;
+//   type: string;
+//   avgAmount: number;
+// }>();
+const { order } = defineProps<{
+  order: Order | Quote;
   avgAmount: number;
+  type: string;
 }>();
 
 const formattedPrice = (num: number) => {
@@ -13,23 +20,26 @@ const formattedPrice = (num: number) => {
 </script>
 
 <template>
-  <div class="item">
+  <div
+    class="item"
+    :style="{ border: order.order ? '1px solid #c0c52d' : '' }"
+  >
     <div
       class="item__progress"
       :style="{
-        transform: `translateX(-${Math.min((quantity / avgAmount) * 100, 100)}%)`,
-        backgroundColor: type === 'bid' ? '#3b1919' : '#1a2b28',
+        transform: `translateX(-${Math.min((order.quantity / avgAmount) * 100, 100)}%)`,
+        backgroundColor: type === 'bid' ? '#1a2b28' : '#3b1919',
       }"
     ></div>
     <div class="item__wrapper">
       <div
         class="item__price"
-        :class="[type === 'bid' ? 'red-color' : 'green-color']"
+        :class="[type === 'bid' ? 'green-color' : 'red-color']"
       >
-        {{ price.toFixed(2) }}
+        {{ order.price }}
       </div>
-      <div class="item__quantity">{{ quantity.toFixed(5) }}</div>
-      <div class="item__total">{{ formattedPrice(price * quantity) }}</div>
+      <div class="item__quantity">{{ order.quantity.toFixed(5) }}</div>
+      <div class="item__total">{{ formattedPrice(order.price * order.quantity) }}</div>
     </div>
   </div>
 </template>
@@ -53,7 +63,7 @@ const formattedPrice = (num: number) => {
   &__wrapper {
     position: relative;
     z-index: 3;
-    padding: 5px 20px;
+    padding: 3px 20px;
     display: flex;
     color: rgb(201, 210, 219);
   }

@@ -3,6 +3,7 @@ import { createStore, Store, useStore as baseUseStore } from "vuex";
 
 export interface Quote {
   price: number;
+  order: boolean;
   quantity: number;
 }
 
@@ -14,12 +15,13 @@ export interface State {
   chosenSymbol: string;
 }
 
-interface Order {
-  time: string;
-  id: string;
+export interface Order {
+  order: boolean;
+  id: number;
+  type: string;
   symbol: string;
   price: number;
-  amount: number;
+  quantity: number;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
@@ -52,6 +54,9 @@ export const store = createStore<State>({
     setChosenSymbol(state, symbol: string) {
       state.chosenSymbol = symbol;
     },
+    removeOrder(state, order: Order) {
+      state.orders = state.orders.filter(el => el.id !== order.id);
+    },
   },
   actions: {
     setSymbols({ commit }, symbols: string[]) {
@@ -68,6 +73,9 @@ export const store = createStore<State>({
     },
     setChosenSymbol({ commit }, symbol: string) {
       commit("setChosenSymbol", symbol);
+    },
+    removeOrder({ commit }, order: Order) {
+      commit("removeOrder", order);
     },
   },
 });

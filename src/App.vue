@@ -79,7 +79,7 @@ onMounted(async () => {
   width: 600px;
   margin: 0 auto;
   position: relative;
-  padding-top: 100px;
+  padding-top: 20px;
 }
 
 .header {

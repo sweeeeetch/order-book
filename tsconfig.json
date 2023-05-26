@@ -9,6 +9,7 @@
     }
   ],
   "compilerOptions": {
-    "types": ["element-plus/global"]
+    "types": ["element-plus/global"],
+    "lib": ["es5", "es6", "dom", "dom.iterable"]
   }
 }
