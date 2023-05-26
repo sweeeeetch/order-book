@@ -75,7 +75,7 @@ In order to start this project from local PC, you need to follow this steps belo
    npm install
    ```
 3. Run starting script and you are settled!
-```sh
-    npm run dev
+   ```sh
+   npm run dev
    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
